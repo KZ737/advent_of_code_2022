@@ -1,2 +1,4 @@
-# advent_of_code
- 2022 Advent of Code
+# 2022 Advent of Code
+ As long as I have the time to solve them...
+ 
+ Imo better readability >>> fewer lines
