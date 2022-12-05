@@ -9,3 +9,4 @@ for line in inputfile:
         curSum = 0
 sums.sort(reverse=True)
 print(sums[0], sum(sums[0:3]))
+inputfile.close()

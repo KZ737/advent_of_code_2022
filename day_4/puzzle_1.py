@@ -9,3 +9,4 @@ for line in inputfile:
     if (sections[0][0] <= sections[1][0] and sections[0][1] >= sections[1][1]) or (sections[0][0] >= sections[1][0] and sections[0][1] <= sections[1][1]):
         curSum += 1
 print(curSum)
+inputfile.close()

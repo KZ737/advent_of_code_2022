@@ -8,3 +8,4 @@ for line in inputfile:
         curMax = max(curMax, curSum)
         curSum = 0
 print(curMax)
+inputfile.close()

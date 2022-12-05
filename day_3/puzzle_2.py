@@ -12,3 +12,4 @@ for line in inputfile:
         curSum += (ord(commonElement) - ord("a") + 1) if commonElement.islower() else (ord(commonElement) - ord("A") + 27)
         sacks = []
 print(curSum)
+inputfile.close()

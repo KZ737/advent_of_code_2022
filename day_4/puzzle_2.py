@@ -11,3 +11,4 @@ for line in inputfile:
     if sections[0][1] >= sections[1][0]:
         curSum += 1
 print(curSum)
+inputfile.close()

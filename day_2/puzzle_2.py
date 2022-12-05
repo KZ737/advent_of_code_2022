@@ -8,3 +8,4 @@ for line in inputfile:
     '''
     curSum += [1, 2, 3][((ord(line[0])-ord("A"))+(ord(line[2])-ord("Y"))) % 3] + [0, 3, 6][ord(line[2])-ord("X")]
 print(curSum)
+inputfile.close()

@@ -9,3 +9,4 @@ for line in inputfile:
     commonElement = sacks[0].intersection(sacks[1]).pop()
     curSum += (ord(commonElement) - ord("a") + 1) if commonElement.islower() else (ord(commonElement) - ord("A") + 27)
 print(curSum)
+inputfile.close()
