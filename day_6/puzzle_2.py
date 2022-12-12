@@ -1,4 +1,3 @@
-import re
 inputfile = open("./day_6/input.txt", "r")
 text = inputfile.readline()
 '''
