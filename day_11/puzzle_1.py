@@ -10,8 +10,8 @@ In inspecAndThrow(), a monkey goes through all items in its list, performs the o
 class Monkey:
     def __init__(self, startingItems: list[int], operation, testInt: int, trueMonkey: int, falseMonkey: int):
         self.items = startingItems
-        # self.operation = operation
-        self.operation = lambda old: eval(operation)
+        self.operation = operation
+        # self.operation = lambda old: eval(operation)
         self.testInt = testInt
         self.trueMonkey = trueMonkey
         self.falseMonkey = falseMonkey
@@ -32,6 +32,12 @@ class Monkey:
             self.inspectedItems += 1
 
 '''
+See comment on line 55 for purpose.
+'''
+def createOp(string):
+    return lambda old: eval(string)
+
+'''
 We break the input up every time there are two newlines after each other, then look for the regex pattern in each part. The pattern retrieves the monkey's id, initial assortment of items, worry level operation, divisibility test integer, and the monkeys it can throw items to.
 '''
 pattern = "Monkey (?P<id>[0-9]+):\n\s+Starting items: (?P<startingItems>[0-9, ]+)\n\s+Operation: new = (?P<op>[-+*\/old 1-9]+)\n\s+Test: divisible by (?P<testInt>[0-9]+)\n\s+If true: throw to monkey (?P<trueMonkey>[0-9]+)\n\s+If false: throw to monkey (?P<falseMonkey>[0-9]+)"
@@ -46,11 +52,11 @@ for monkey in input:
     id, testInt, trueMonkey, falseMonkey = map(int, [m.group("id"), m.group("testInt"), m.group("trueMonkey"), m.group("falseMonkey")])
     startingItems = list(map(int, m.group("startingItems").split(",")))
     '''
-    Why in the everloving FUCK does this not work???
+    Just simply writing "operation = lambda old: eval(m.group("op"))" here will _not_ work, we can either pass m.group("op") to the Monkey class's init and eval there (commented lines 14 and 59), or we can use a pre-defined function that returns the lambda function.
     '''
-    # operation = lambda old: eval(m.group("op"))
-    # newMonkey = Monkey(startingItems, operation, testInt, trueMonkey, falseMonkey)
-    newMonkey = Monkey(startingItems, m.group("op"), testInt, trueMonkey, falseMonkey)
+    operation = createOp(m.group("op"))
+    newMonkey = Monkey(startingItems, operation, testInt, trueMonkey, falseMonkey)
+    # newMonkey = Monkey(startingItems, m.group("op"), testInt, trueMonkey, falseMonkey)
     monkeys.update({id: newMonkey})
 
 '''
