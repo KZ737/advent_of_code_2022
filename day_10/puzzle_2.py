@@ -40,3 +40,4 @@ for line in inputfile:
         outputfile.write("\n")
 
 inputfile.close()
+outputfile.close()
