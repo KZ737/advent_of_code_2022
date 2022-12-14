@@ -106,13 +106,13 @@ class Sand:
     If the result of falling one step is that the grain of sand moved (fallOneStep returns 0), it continues to try moving again.
     If the result of falling one step is that the grain of send has settled or that it has fallen into the abyss, return 1 or 2, respectively.
     '''
-    def fallTillStop(self, caveMap, bounds):
+    def fallUntilStopped(self, caveMap, bounds):
         while True:
-            stopped = self.fallOneStep(caveMap, bounds)
-            if stopped == 2:
-                return 2
-            if stopped == 1:
-                return 1
+            fallResult = self.fallOneStep(caveMap, bounds)
+            if fallResult == 0:
+                continue
+            else:
+                return fallResult
 
 '''
 We start with 0 grains of sand, then we create one, let it fall while it can.
@@ -123,7 +123,7 @@ sandCount = 0
 while True:
     sandCount += 1
     newSand = Sand(startingPoint, caveMap)
-    stopped = newSand.fallTillStop(caveMap, bounds)
+    stopped = newSand.fallUntilStopped(caveMap, bounds)
     if newSand.coords[1] == 0:
         break
     else:
