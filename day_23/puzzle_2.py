@@ -100,6 +100,7 @@ def printElfMap(elves):
 
 '''
 We calculate the new elf locations until there is no change between the new and the previous one, incrementing our counter in each loop.
+This is a fairly slow solution, finished for me in 5-10 minutes (didn't time it exactly), but currently I have no energy to optimize it.
 '''
 counter = 0
 while True:
